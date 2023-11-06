@@ -1,95 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>My Blog</title>
-	<style type="text/css">
-	body {
-		font-family: Arial, sans-serif;
-		line-height: 1.6em;
-		color: #333;
-	}
-	.container {
-		width: 80%;
-		margin:auto;
-		overflow: hidden;
-	}
-	header {
-		background: #50b3a2;
-		padding-top: 30px;
-		min-height: 70px;
-		border-bottom: #e8491d 3px solid;
-	}
-	header a {
-		color: #ffffff;
-		text-decoration: none;
-		text-transform: uppercase;
-		font-size: 16px;
-	}
-	header li {
-		float: left;
-		display: inline;
-		padding: 0 20px 0 20px;
-	}
-	header #branding {
-		float: left;
-	}
-	header #branding h1 {
-		margin: 0;
-	}
-	header nav {
-		float: right;
-		margin-top: 10px;
-	}
-	header .highlight, header .current a {
-		color: #e8491d;
-		font-weight: bold;
-	}
-	header a:hover {
-		color: #cccccc;
-		text-decoration: underline;
-	}
-	</style>
-</head>
-<body>
-	<header>
-		<div class="container">
-			<h1>My Blog</h1>
-			<nav>
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
+    <head>
+        <title>Django blog</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f0f0;
+            }
+            header {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 0;
+            }
+            header h1 a {
+                color: #fff;
+                text-decoration: none;
+                padding: 0 20px;
+            }
+            article {
+                background-color: #fff;
+                margin: 20px auto;
+                padding: 20px;
+                max-width: 800px;
+            }
+            article time {
+                display: block;
+                color: #555;
+                font-size: 0.8em;
+                margin-bottom: 10px;
+            }
+            article h2 a {
+                color: #333;
+                text-decoration: none;
+            }
+            article p {
+                font-size: 1em;
+                line-height: 1.6em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="/">Django Blog</a></h1>
+        </header>
 
-	<main>
-		<div class="container">
-			<div class="post">
-				<h2>Post Title</h2>
-				<p>Post content goes here.</p>
-				<a href="#">Read More</a>
-			</div>
-
-			<div class="post">
-				<h2>Post Title</h2>
-				<p>Post content goes here.</p>
-				<a href="#">Read More</a>
-			</div>
-
-			<div class="post">
-				<h2>Post Title</h2>
-				<p>Post content goes here.</p>
-				<a href="#">Read More</a>
-			</div>
-		</div>
-	</main>
-
-	<footer>
-		<div class="container">
-			<p>&copy; 2023 My Blog, by mohammad shojaei</p>
-		</div>
-	</footer>
-</body>
+        {% for post in posts %}
+            <article>
+                <time>published: {{ post.published_date }}</time>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </article>
+        {% endfor %}
+    </body>
 </html>
